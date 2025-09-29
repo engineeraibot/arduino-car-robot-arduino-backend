@@ -43,16 +43,16 @@ void loop() {
 
   
   // Write outputs
-  if((!isEmpty(receivedMessage) && receivedMessage.equals(String("w")))) {
+  if((!isEmpty(receivedMessage) && receivedMessage.equals(String("UP_PRESSED")))) {
     desiredDirection = front;
     Serial.println("Desired direction front");
-  } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("s")))) {
+  } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("DOWN_PRESSED")))) {
     desiredDirection = rear;
     Serial.println("Desired direction rear");
-  } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("a")))) {
+  } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("LEFT_PRESSED")))) {
     desiredDirection = left;
     Serial.println("Desired direction left");
-  } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("d")))) {
+  } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("RIGHT_PRESSED")))) {
     desiredDirection = right;
     Serial.println("Desired direction right");
   } else {
