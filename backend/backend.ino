@@ -35,29 +35,19 @@ void setup() {
 
 void loop() {
   // Read inputs
-  // No line ending is not supported
-  Serial.print("Entering main code");
   String receivedMessage = readMessageFromSerial();
-  Serial.print("Received message: ");
-  Serial.println(receivedMessage);
 
-  
   // Write outputs
   if((!isEmpty(receivedMessage) && receivedMessage.equals(String("UP_PRESSED")))) {
     desiredDirection = front;
-    Serial.println("Desired direction front");
   } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("DOWN_PRESSED")))) {
     desiredDirection = rear;
-    Serial.println("Desired direction rear");
   } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("LEFT_PRESSED")))) {
     desiredDirection = left;
-    Serial.println("Desired direction left");
   } else if((!isEmpty(receivedMessage) && receivedMessage.equals(String("RIGHT_PRESSED")))) {
     desiredDirection = right;
-    Serial.println("Desired direction right");
   } else {
     desiredDirection = stop;
-    Serial.println("Desired direction stop");
   }
   move();
 }
@@ -83,19 +73,18 @@ boolean isEmpty(String message) {
 void move() {
   if(currentDirection != desiredDirection) {
     if(desiredDirection == front) {
-      Serial.println("Moving front");
-	  moveFront();
-	} else if(desiredDirection == rear) {
-	  moveRear();
-	} else if(desiredDirection == left) {
+      moveFront();
+    } else if(desiredDirection == rear) {
+      moveRear();
+    } else if(desiredDirection == left) {
       moveLeft();
-	} else if(desiredDirection == right) {
-	  moveRight();
-	} else {
-	  stopMovement();
-	}
-	  currentDirection = desiredDirection;
+    } else if(desiredDirection == right) {
+      moveRight();
+    } else {
+      stopMovement();
+    }
   }
+  currentDirection = desiredDirection;
 }
 
 void moveFront() {
@@ -129,7 +118,7 @@ void moveLeft() {
 }
 
 void moveRight() {
-    digitalWrite(motorSwitchAPinLeft, HIGH);
+  digitalWrite(motorSwitchAPinLeft, HIGH);
 	digitalWrite(motorSwitchBPinLeft, LOW);
 	digitalWrite(motorSwitchAPinRight, HIGH);
 	digitalWrite(motorSwitchBPinRight, LOW);
